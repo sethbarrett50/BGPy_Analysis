@@ -73,17 +73,9 @@ def autoRun(configOptions: list = __configOptions, test : bool = False) -> None:
 
 def main():
     # Runs user choice sim config and prints test strings
-    # SimSelector(configSetter(test=True))
+    SimSelector(configSetter(test=True))
 
-    # AS-Cones -- To Run Overnight
-    autoRun(test=True, configOptions=[
-        ['AS-Cones'],
-        [AccidentalRouteLeak, PrefixHijack,
-        SubprefixHijack,'ForgedOriginSubPrefix'],
-        [ASGroups.STUBS, ASGroups.MULTIHOMED, ASGroups.INPUT_CLIQUE, 'NoDeploymentType']
-    ])
-
-    # # Run all sims
+    # Run all sims
     # autoRun()
 
 if __name__ == '__main__':

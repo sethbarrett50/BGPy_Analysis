@@ -20,7 +20,7 @@ We would like to express our gratitude to the authors of BGPy for their excellen
 - `dataAnalysis`: Includes the Julia code for data concatenation and Jupyter notebooks for further exploratory data analysis.
 
 ## Usage
-This project is designed to run on an M1 MacBook, with specific adaptations made to the BGPy package. For setup and usage instructions, refer to the [BGPy Tutorial](https://github.com/jfuruness/bgpy_pkg/wiki/Tutorial). Ensure Julia is installed on your system, as our data analysis scripts require it. These scripts will automatically install necessary Julia packages.
+This project is designed to run on an M1 MacBook, with specific adaptations made to the BGPy package on commit `de44b54`. For setup and usage instructions, refer to the [BGPy Tutorial](https://github.com/jfuruness/bgpy_pkg/wiki/Tutorial). Ensure Julia is installed on your system, as our data analysis scripts require it. These scripts will automatically install necessary Julia packages.
 
 ## Open Source Justification
 We are open sourcing our code to be transparent and to benefit from community insights, especially to identify and correct any potential errors in our simulation or analysis processes.

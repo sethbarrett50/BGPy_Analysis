@@ -9,9 +9,22 @@ function consolidate_data(policies::Vector{String}, scenarios::Vector{String}, d
     columns_to_extract = ["scenario_cls", "AdoptingPolicyCls", "BasePolicyCls", "outcome", "percent_adopt", "value", "yerr"]
     
     consolidated_df = DataFrame() 
-    
+
+    policy_filter_map = Dict(
+        "AS-Cones" => "OnlyToCustomers",
+        "ASPA" => "ROV",
+        "PeerROV" => "BGP",
+        "ROV" => "BGP",
+        "ROVPPV2Lite" => "ROVPPV2Lite",
+        "ROVPPV1Lite" => "ROVPPV1Lite",
+        "ROVPPV2ImprovedLite" => "ROVPPV2ImprovedLite"
+    )
+
     for policy in policies
         for scenario in scenarios
+            if (policy == "ROVPPV2Lite" || policy == "ROVPPV1Lite" || policy == "ROVPPV2ImprovedLite") && scenario == "AccidentalRouteLeak"
+                continue
+            end
             for deployment_type in deployment_types
                 dir_path = joinpath(base_dir, "$(policy)$(scenario)$(deployment_type)")
                 csv_files = glob("*.csv", dir_path)
@@ -37,6 +50,9 @@ function consolidate_data(policies::Vector{String}, scenarios::Vector{String}, d
                             sub_df[!, :AdoptingPolicyCls] .= "AS-Cones"
                         end
 
+                        policy_cls_filter = policy_filter_map[policy]
+                        sub_df = filter(row -> row[:PolicyCls] == policy_cls_filter, sub_df)
+
                         sub_df[!, :deployment_type] = fill(deployment_type, nrow(sub_df))
 
                         consolidated_df = vcat(consolidated_df, sub_df)
@@ -60,7 +76,7 @@ function consolidate_data(policies::Vector{String}, scenarios::Vector{String}, d
 end
 
 
-policies = ["ROV", "PeerROV", "ASPA", "AS-Cones"]
+policies = ["ROV", "PeerROV", "ASPA", "AS-Cones", "ROVPPV2Lite", "ROVPPV1Lite", "ROVPPV2ImprovedLite"]
 scenarios = ["PrefixHijack", "AccidentalRouteLeak", "SubprefixHijack", "ForgedOriginSubPrefix"]
 deployment_types = ["STUBS", "MULTIHOMED", "INPUT_CLIQUE", "NoDeploymentType"]
 

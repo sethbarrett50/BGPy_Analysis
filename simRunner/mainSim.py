@@ -26,7 +26,7 @@ def configSetter(configOptions: list = __configOptions, test: bool = False) -> d
         dict: A dictionary containing user-selected configurations for 'policy', 'scenario', and 'asType'.
     """
 
-    # Qurstions used in config setting loop
+    # Questions used in config setting loop
     userQuestions = [
         'Which type of defensive policy do you want applied:\n[1] ROV\n[2] ROV++[WiP]\n[3] ASPA\n[4] PeerROV \n[5] AS-Cones',
         'Which type of attack secenario do you want applied:\n[1] Accidental Route Leak\n[2] Prefix Hijack\n[3] Subprefix Hijack\n[4] Forged-Origin Prefix Hijack',
@@ -75,7 +75,7 @@ def main():
     # Runs user choice sim config and prints test strings
     SimSelector(configSetter(test=True))
 
-    # Run all sims
+    # # Run all sims
     # autoRun()
 
 if __name__ == '__main__':

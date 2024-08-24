@@ -8,6 +8,7 @@ This repository contains the code associated with our work-in-progress paper tit
 - Calvin Idom - [cli025@email.latech.edu](mailto:cli025@email.latech.edu)
 - German Zavala Villafuerte - [gzava010@jaguar.tamu.edu](mailto:gzava010@jaguar.tamu.edu)
 - Andrew Byers - [adbyers1@asu.edu](mailto:adbyers1@asu.edu)
+- Berk Gulmezoglu - [bgulmez@iastate.edu](mailto:bgulmez@iastate.edu)
 
 ## Acknowledgments
 We would like to express our gratitude to the authors of BGPy for their excellent simulation framework and their assistance. You can find more about BGPy in the following publication:
